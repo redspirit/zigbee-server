@@ -3,6 +3,7 @@ require('console-stamp')(console, { pattern: 'dd/mm/yyyy HH:MM:ss' });
 require('./modules/exceptions');
 const express = require('express');
 const bodyParser = require('body-parser');
+const socket = require('./modules/socket');
 
 const app = express();
 

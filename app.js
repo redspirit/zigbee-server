@@ -12,6 +12,7 @@ app.use(bodyParser.json({
 }));
 
 app.use('/test', require('./controllers/test'));
+app.use('/port', require('./controllers/port'));
 
 app.use(function(req, res, next) {
     res.sendStatus(404);

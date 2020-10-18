@@ -1,18 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
+const portpath = '/dev/ttyACM0';
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
-const port = new SerialPort('/dev/ttyACM0');
+const port = new SerialPort(portpath);
 
 const parser = new Readline();
 port.pipe(parser);
 
+console.log('Listen port', portpath);
 parser.on('data', line => console.log(`> ${line}`));
 
 router.post('/', (req, res) => {
 
     let text = req.body.text;
+    
+    console.log('Input', text);
 
     port.write(text, function(err) {
         if (err) {
